@@ -1,0 +1,32 @@
+<% if user_signed_in? %>
+  <p><%= "#{current_user.nickname}さん、ようこそ！" %></p>
+  <%= link_to 'ログアウト',  destroy_user_session_path, data: {turbo_method: :delete} %>
+<% else %>
+  <%= link_to 'ログイン', new_user_session_path %> |
+  <%= link_to '新規登録', new_user_registration_path %>
+<% end %>
+
+<h1>投稿一覧</h1>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    <p><strong>投稿者:</strong> <%= post.user.nickname %></p>
+    <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
+    <p><strong>成果:</strong> <%= post.result %></p>
+
+    <% if post.image.attached? %>
+      <div>
+        <%= image_tag post.image, style: "max-width: 300px;" %>
+      </div>
+    <% end %>
+
+    <hr>
+  </div>
+<% end %>
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <!-- 上記と同じ -->
+  <% end %>
+<% else %>
+  <p>まだ投稿がありません</p>
+<% end %>
