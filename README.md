@@ -17,11 +17,11 @@
 
 ## postsテーブル
 
-|Column|Type      |Options    |
-|------|----------|-----------|
-|time  |integer   |null: false|
-|result|text      |null: false|
-|user  |references|null: false|
+|Column  |Type      |Options    |
+|--------|----------|-----------|
+|duration|integer   |null: false|
+|result  |text      |null: false|
+|user    |references|null: false|
 
 ### Association
 
