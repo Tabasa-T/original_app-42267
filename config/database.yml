@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: original_app-42267
+  database: original_app_42267_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: original_app-42267
+  database: original_app_42267_test
 
 production:
   <<: *default

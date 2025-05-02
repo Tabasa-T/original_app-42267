@@ -1,0 +1,10 @@
+<h1>新規投稿ページ</h1>
+<%= form_with(model: @post, local: true, html: { multipart: true }) do |f| %>
+  <%= render "shared/error_messages", model: f.object %>
+  <%= f.text_field :duration, placeholder: "達成にかかった時間" %><br>
+  <%= f.text_field :result, placeholder: "成し遂げたこと" %><br>
+  <%= f.file_field :image %><br>
+  <%= f.submit "投稿" %>
+<% end %>
+
+<%= link_to 'トップページに戻る', root_path %>
