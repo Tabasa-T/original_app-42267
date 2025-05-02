@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
     @posts = Post.all.order('created_at DESC')
@@ -32,6 +32,11 @@ class PostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @post.destroy
+    redirect_to root_path, notice: '投稿を削除しました'
   end
 
   private
