@@ -10,7 +10,7 @@
 
 <p><strong>かかった時間:</strong> <%= @post.duration %>分</p>
 <p><strong>成果:</strong> <%= @post.result %></p>
-<p><strong>投稿者:</strong> <%= @post.user.nickname %></p>
+<p><strong>投稿者:</strong> <%= link_to @post.user.nickname, mypage_path %></p>
 
 <%# 編集・削除は投稿者だけに表示 %>
 <% if user_signed_in? && current_user == @post.user %>
