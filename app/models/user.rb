@@ -11,4 +11,6 @@ class User < ApplicationRecord
                           message: 'は半角英数字混合で入力してください' 
                          }, on: :create
   end
+
+  has_many :posts
 end
