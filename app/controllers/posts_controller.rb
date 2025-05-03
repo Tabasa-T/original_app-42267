@@ -41,6 +41,8 @@ class PostsController < ApplicationController
 
   def mypage
     @posts = current_user.posts.order(created_at: :desc)
+    @total_duration = current_user.posts.sum(:duration) || 0
+    @daily_durations = current_user.posts.group_by_day(:created_at).sum(:duration)
   end
 
   private
