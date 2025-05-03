@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :mypage]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -37,6 +37,10 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path, notice: '投稿を削除しました'
+  end
+
+  def mypage
+    @posts = current_user.posts.order(created_at: :desc)
   end
 
   private
