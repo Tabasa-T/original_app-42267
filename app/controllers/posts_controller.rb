@@ -41,6 +41,7 @@ class PostsController < ApplicationController
 
   def mypage
     @posts = current_user.posts.order(created_at: :desc)
+    @total_duration = current_user.posts.sum(:duration) || 0
   end
 
   private
