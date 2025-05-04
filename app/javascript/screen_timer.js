@@ -1,3 +1,29 @@
+function logoutUser() {
+  sessionStorage.setItem("force_exit", true);
+  sessionStorage.removeItem("start_time");
+
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "/users/sign_out"; // Deviseのログアウトパス
+
+  const methodInput = document.createElement("input");
+  methodInput.type = "hidden";
+  methodInput.name = "_method";
+  methodInput.value = "delete";
+  form.appendChild(methodInput);
+
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+  const csrfInput = document.createElement("input");
+  csrfInput.type = "hidden";
+  csrfInput.name = "authenticity_token";
+  csrfInput.value = csrfToken;
+  form.appendChild(csrfInput);
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const LIMIT_TIME = 5 * 60 * 1000; // 5分
   const now = Date.now();
@@ -11,14 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const startTime = parseInt(sessionStorage.getItem("start_time"), 10);
   const timePassed = now - startTime;
 
-  // 3. 5分経過してたらすぐ表示 / 残ってたら待ってから表示
+  // 3. 5分経過してたらログアウトページへ
   if (timePassed >= LIMIT_TIME) {
-    alert("あなたの今日の価値作りはここからだね！少し休憩して、また来てね☕️");
+    logoutUser(); // すぐログアウト
   } else {
     const timeLeft = LIMIT_TIME - timePassed;
-
     setTimeout(() => {
-      alert("あなたの今日の価値作りはここからだね！少し休憩して、また来てね☕️");
+      logoutUser(); // 5分後にログアウト
     }, timeLeft);
   }
 });
