@@ -35,3 +35,6 @@
 <% else %>
   <p>これまでに投資した時間：0分</p>
 <% end %>
+
+<h2>日ごとの投資時間の推移</h2>
+<%= line_chart @daily_durations, xtitle: "日付", ytitle: "分", height: "300px" %>
