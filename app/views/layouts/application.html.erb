@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="turbo-cache-control" content="no-cache">
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-user-id="<%= current_user&.id %>">
     <% if notice %>
       <p class="notice"><%= notice %></p>
     <% end %>
+    <!-- オーバーレイ用のHTML（常に含める） -->
+    <div id="force-exit-overlay">
+      <div class="message">
+        あなたの今日の価値作りはここからだね！<br>
+        また明日、集中した時間を一緒に作ろう☕️
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
