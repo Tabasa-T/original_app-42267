@@ -10,4 +10,5 @@ pin "chart.js", to: "https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.
 pin "chartjs-adapter-date-fns", to: "https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"
 pin "screen_timer", to: "screen_timer.js"
 pin "bootstrap" # @5.3.5
-pin "@popperjs/core", to: "@popperjs--core.js" # @2.11.8
+pin pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.8/dist/esm/index.js"
+
