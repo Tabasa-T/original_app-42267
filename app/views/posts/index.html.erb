@@ -1,34 +1,28 @@
-<% if user_signed_in? %>
-  <p><%= link_to "#{current_user.nickname}さん、ようこそ！", mypage_path %></p>
-  <%= link_to 'ログアウト',  destroy_user_session_path, data: {turbo_method: :delete} %>
-<% else %>
-  <%= link_to 'ログイン', new_user_session_path %> |
-  <%= link_to '新規登録', new_user_registration_path %>
-<% end %>
+<div class="container">
+  <h1 class="section-title mb-4">みんなの記録</h1>
 
-<h1>投稿一覧</h1>
+  <% if @posts.any? %>
+    <div class="post-list">
+      <% @posts.each do |post| %>
+        <div class="post-card">
+          <p class="post-author"><strong><%= post.user.nickname %></strong> さんの記録</p>
 
-<% @posts.each do |post| %>
-  <div class="post">
-    <p><strong>投稿者:</strong> <%= post.user.nickname %></p>
-    <%= link_to post_path(post.id) do %>
-      <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
-      <p><strong>成果:</strong> <%= post.result %></p>
+          <%= link_to post_path(post.id), class: "post-link" do %>
+            <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
+            <p><strong>成果:</strong> <%= truncate(post.result, length: 80) %></p>
 
-      <% if post.image.attached? %>
-        <div>
-          <%= image_tag post.image, style: "max-width: 300px;" %>
+            <div class="post-image">
+              <% if post.image.attached? %>
+                <%= image_tag post.image, class: "img-fluid rounded" %>
+              <% else %>
+                <%= image_tag "notebook3.png", class: "img-fluid rounded" %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
-
-    <hr>
-  </div>
-<% end %>
-<% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <!-- 上記と同じ -->
+    </div>
+  <% else %>
+    <p class="text-muted">まだ投稿がありません。</p>
   <% end %>
-<% else %>
-  <p>まだ投稿がありません</p>
-<% end %>
+</div>

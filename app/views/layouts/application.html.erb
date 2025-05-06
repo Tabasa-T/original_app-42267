@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
-  <body data-user-id="<%= current_user&.id %>">
+  <body class="<%= controller.controller_name %>-<%= controller.action_name %>" data-user-id="<%= current_user&.id %>">
     <!-- ヘッダー -->
     <header>
       <div class="container d-flex justify-content-between align-items-center">
