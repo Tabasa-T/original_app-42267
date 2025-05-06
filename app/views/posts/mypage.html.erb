@@ -1,7 +1,7 @@
 <main>
   <div class="container my-5">
     <div class="mypage-header text-center mb-4">
-      <h2 class="text-muted"><%= current_user.nickname %> さんのマイページ</h2>
+      <h2 class="text-library"> <%= current_user.nickname %> さんのマイページ</h2>
     </div>
 
     <% if @posts.any? %>
@@ -25,19 +25,24 @@
           </div>
         <% end %>
       </div>
-
-    <h4 class="text-center mb-3">日ごとのじかんの記録</h4>
-    <%= column_chart @daily_durations,
-      xtitle: "にちじ",
-      ytitle: "ふんすう",
-      height: "300px",
-      colors: ["#a98265"],
-      library: {
-        backgroundColor: "transparent",
-        hAxis: { textStyle: { color: "#6e5a47" } },
-        vAxis: { textStyle: { color: "#6e5a47" } }
-      }
-    %>
+      <!-- 合計記録時間の表示（中央） -->
+      <div class="mt-5 text-center">
+        <h4 class="text-library">これまでに投資した時間</h4>
+        <p class="fs-4 text-library"><%= @total_duration %> 分</p>
+      </div>
+      <!-- グラフ -->
+      <h4 class="text-center mb-3 text-library">日ごとのじかんの記録</h4>
+      <%= column_chart @daily_durations,
+        xtitle: "にちじ",
+        ytitle: "ふんすう",
+        height: "300px",
+        colors: ["#a98265"],
+        library: {
+          backgroundColor: "transparent",
+          hAxis: { textStyle: { color: "#6e5a47" } },
+          vAxis: { textStyle: { color: "#6e5a47" } }
+        }
+      %>
     <% else %>
       <p class="text-muted text-center">まだ投稿がありません</p>
     <% end %>
