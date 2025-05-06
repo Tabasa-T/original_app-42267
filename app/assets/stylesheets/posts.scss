@@ -162,4 +162,56 @@ body.posts-edit {
   }
 }
 
+//詳細ページ
+body.posts-show {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5eee9;
+  font-family: "Noto Sans JP", sans-serif;
+
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem 2rem;
+  }
+
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #f4e3d7;
+    color: #6e5a47;
+    font-size: 0.9rem;
+  }
+
+  .post-detail-card {
+    background-color: #fdfaf5;
+    border: 1px solid rgba(138, 182, 169, 0.15);
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem 3rem;
+    width: 100%;
+    max-width: 720px;
+  }
+
+  .post-detail-card p {
+    font-size: 1.05rem;
+    color: #4e3c2f;
+    line-height: 1.6;
+  }
+
+  .btn {
+    font-weight: 500;
+  }
+
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}
+
 
