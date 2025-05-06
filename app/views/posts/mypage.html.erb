@@ -26,15 +26,18 @@
         <% end %>
       </div>
 
-      <div class="mt-5 text-center">
-        <h4>これまでに投資した時間：</h4>
-        <p class="fs-4"><%= @total_duration %> 分</p>
-      </div>
-
-      <div class="mt-5">
-        <h4 class="text-center mb-3">日ごとの投資時間の推移</h4>
-        <%= line_chart @daily_durations, xtitle: "日付", ytitle: "分", height: "300px" %>
-      </div>
+    <h4 class="text-center mb-3">日ごとのじかんの記録</h4>
+    <%= column_chart @daily_durations,
+      xtitle: "にちじ",
+      ytitle: "ふんすう",
+      height: "300px",
+      colors: ["#a98265"],
+      library: {
+        backgroundColor: "transparent",
+        hAxis: { textStyle: { color: "#6e5a47" } },
+        vAxis: { textStyle: { color: "#6e5a47" } }
+      }
+    %>
     <% else %>
       <p class="text-muted text-center">まだ投稿がありません</p>
     <% end %>
