@@ -1,40 +1,45 @@
-<h1><%= current_user.nickname %> さんのマイページ</h1>
-
-<nav>
-  <ul>
-    <li><%= link_to 'プロフィール編集', edit_user_registration_path %></li>
-    <li><%= link_to '新しい投稿を作成', new_post_path %></li>
-    <li><%= link_to '一覧に戻る', posts_path %></li>
-    <li><%= link_to 'ログアウト',  destroy_user_session_path, data: {turbo_method: :delete} %></li>
-  </ul>
-</nav>
-
-<hr>
-
-<h2>これまでの投稿</h2>
-
-<% if @posts.any? %>
-  <% @posts.each do |post| %>
-    <div class="post">
-      <% if post.image.attached? %>
-        <%= image_tag post.image, style: "max-width: 200px;" %><br>
-      <% end %>
-      <strong>時間:</strong> <%= post.duration %> 分<br>
-      <strong>成果:</strong> <%= post.result %><br>
-      <%= link_to '詳細を見る', post_path(post) %>
-      <hr>
+<main>
+  <div class="container my-5">
+    <div class="mypage-header text-center mb-4">
+      <h2 class="text-muted"><%= current_user.nickname %> さんのマイページ</h2>
     </div>
-  <% end %>
-<% else %>
-  <p>まだ投稿がありません</p>
-<% end %>
 
+    <% if @posts.any? %>
+      <div class="post-list">
+        <% @posts.each do |post| %>
+          <div class="post-card">
+            <p class="post-author">あなたの記録</p>
 
-<% if @posts.any? %>
-  <p>これまでに投資した時間：<%= @total_duration %>分</p>
-<% else %>
-  <p>これまでに投資した時間：0分</p>
-<% end %>
+            <%= link_to post_path(post), class: "post-link" do %>
+              <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
+              <p><strong>成果:</strong> <%= truncate(post.result, length: 80) %></p>
 
-<h2>日ごとの投資時間の推移</h2>
-<%= line_chart @daily_durations, xtitle: "日付", ytitle: "分", height: "300px" %>
+              <div class="post-image">
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, class: "img-fluid rounded" %>
+                <% else %>
+                  <%= image_tag "sprout.png", class: "img-fluid rounded" %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+    <h4 class="text-center mb-3">日ごとのじかんの記録</h4>
+    <%= column_chart @daily_durations,
+      xtitle: "にちじ",
+      ytitle: "ふんすう",
+      height: "300px",
+      colors: ["#a98265"],
+      library: {
+        backgroundColor: "transparent",
+        hAxis: { textStyle: { color: "#6e5a47" } },
+        vAxis: { textStyle: { color: "#6e5a47" } }
+      }
+    %>
+    <% else %>
+      <p class="text-muted text-center">まだ投稿がありません</p>
+    <% end %>
+  </div>
+</main>
