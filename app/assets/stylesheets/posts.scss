@@ -214,4 +214,95 @@ body.posts-show {
   }
 }
 
+//マイページ
+body.posts-mypage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5eee9;
+  font-family: "Noto Sans JP", sans-serif;
+
+  // containerの制限を解除して3列レイアウトを成立させる
+  .container {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  main {
+    flex: 1;
+    padding: 3rem 1rem 2rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #f4e3d7;
+    color: #6e5a47;
+    font-size: 0.9rem;
+  }
+
+  .mypage-header h2 {
+    color: #6e5a47;
+    font-weight: bold;
+  }
+
+  .post-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0; // 横paddingを外すことでスペース確保
+    justify-items: center;
+    align-items: start;
+  }
+
+  .post-card {
+    background-color: #fffef9;
+    border: 1px solid #eaded0;
+    border-left: 6px solid #d6c1af;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: none; // ← これで列幅いっぱいまで広がる
+    height: 100%;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .post-author {
+    font-weight: bold;
+    color: #6e5a47;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .post-card p {
+    font-size: 1.05rem;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #4e3c2f;
+  }
+
+  .post-image img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+  }
+}
+
+
 
