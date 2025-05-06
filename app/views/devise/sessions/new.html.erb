@@ -1,30 +1,29 @@
-<h2>Log in</h2>
+<div class="container my-5">
+  <div class="login-card p-4 rounded-3 shadow-sm bg-white mx-auto" style="max-width: 600px;">
+    <h2 class="text-center mb-4 text-muted">ログインする</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス", class: "form-label text-dark" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-3", placeholder: "example@tokino.com" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password, "パスワード", class: "form-label text-dark" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control rounded-3", placeholder: "パスワードを入力してください" %>
+      </div>
+
+      <div class="d-grid mb-3">
+        <%= f.submit "ログイン", class: "btn btn-outline-success rounded-3" %>
+      </div>
+
+      <div class="text-center">
+        <%= link_to "パスワードを忘れた方はこちら", new_password_path(resource_name), class: "text-muted small" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-
-  <%= link_to 'トップページに戻る', '#' %>  <%# リンク先指定 %>
-  <%= link_to '新規登録', '#' %>           <%# リンク先指定 %>
-<% end %>
+</div>
 
 
