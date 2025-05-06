@@ -1,21 +1,33 @@
+<main>
+  <div class="container my-5">
+    <div class="post-detail-card p-4 rounded-3 shadow-sm mx-auto" style="max-width: 720px;">
+      <%# タイトル %>
+      <h2 class="text-center mb-4 text-muted">じかんのあと の記録</h2>
 
-<h1>投稿の詳細</h1>
+      <%# 画像表示 %>
+      <% if @post.image.attached? %>
+        <div class="mb-3 text-center">
+          <%= image_tag @post.image, class: "img-fluid rounded", style: "max-height: 300px;" %>
+        </div>
+      <% else %>
+        <div class="mb-3 text-center">
+          <%= image_tag "sprout.png", alt: "記録写真は登録されていません", class: "img-fluid rounded", style: "max-height: 300px;" %>
+        </div>
+      <% end %>
 
-<%# 写真（画像があるときのみ表示） %>
-<% if @post.image.attached? %>
-  <div>
-    <%= image_tag @post.image, style: "max-width: 300px;" %>
+      <%# 投稿データ %>
+      <p><strong>かかった時間:</strong> <%= @post.duration %>分</p>
+      <p><strong>やってみたこと:</strong> <%= @post.result %></p>
+      <p><strong>投稿者:</strong> <%= link_to @post.user.nickname, mypage_path %></p>
+
+      <%# 編集・削除ボタン（本人のみ） %>
+      <% if user_signed_in? && current_user == @post.user %>
+        <div class="mt-4 d-flex gap-3 justify-content-center">
+          <%= link_to '編集', edit_post_path(@post), class: "btn btn-outline-primary rounded-3" %>
+          <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger rounded-3" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</main>
 
-<p><strong>かかった時間:</strong> <%= @post.duration %>分</p>
-<p><strong>成果:</strong> <%= @post.result %></p>
-<p><strong>投稿者:</strong> <%= link_to @post.user.nickname, mypage_path %></p>
-
-<%# 編集・削除は投稿者だけに表示 %>
-<% if user_signed_in? && current_user == @post.user %>
-  <%= link_to '編集', edit_post_path(@post) %> |
-  <%= link_to '削除', post_path(@post), data: {turbo_method: :delete, confirm: '本当に削除しますか？' } %>
-<% end %>
-
-<%= link_to 'トップページに戻る', posts_path %>
