@@ -1,10 +1,35 @@
-<h1>編集ページ</h1>
-<%= form_with(model: @post, local: true, html: { multipart: true }) do |f| %>
-  <%= render "shared/error_messages", model: f.object %>
-  <%= f.text_field :duration, placeholder: "達成にかかった時間" %><br>
-  <%= f.text_field :result, placeholder: "成し遂げたこと" %><br>
-  <%= f.file_field :image %><br>
-  <%= f.submit "編集" %>
-<% end %>
+<main>
+  <div class="container">
+    <div class="post-form-card p-4 rounded-3 shadow-sm mx-auto" style="max-width: 960px;">
+      <h2 class="text-center mb-4 text-muted">記録を編集する</h2>
 
-<%= link_to 'トップページに戻る', root_path %>
+      <%= form_with(model: @post, local: true, html: { multipart: true }) do |f| %>
+        <%= render "shared/error_messages", model: f.object %>
+
+        <!-- duration 入力 -->
+        <div class="mb-3">
+          <%= f.label :duration, "かけた時間（分）", class: "form-label text-dark" %>
+          <%= f.number_field :duration, class: "form-control rounded-3", min: 0, placeholder: "例: 45" %>
+        </div>
+
+        <!-- result 入力 -->
+        <div class="mb-3">
+          <%= f.label :result, "やってみたこと", class: "form-label text-dark" %>
+          <%= f.text_area :result, class: "form-control rounded-3", rows: 4, placeholder: "どんな時間を過ごしましたか？" %>
+        </div>
+
+        <!-- 画像添付 -->
+        <div class="mb-3">
+          <%= f.label :image, "記録写真（任意）", class: "form-label text-dark" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+
+        <!-- 送信ボタン -->
+        <div class="d-grid">
+          <%= f.submit "記録を更新する", class: "btn btn-outline-success rounded-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
+

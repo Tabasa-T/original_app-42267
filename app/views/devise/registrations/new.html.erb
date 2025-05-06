@@ -1,34 +1,36 @@
-<h2>Sign up</h2>
+<div class="container my-5">
+  <div class="signup-card p-4 rounded-3 shadow-sm bg-white mx-auto" style="max-width: 600px;">
+    <h2 class="text-center mb-4 text-muted">新しく利用をはじめる</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-   <div class="field">
-    <%= f.label :nickname %><br />
-    <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname" %>
+      <div class="mb-3">
+        <%= f.label :nickname, "ニックネーム", class: "form-label text-dark" %>
+        <%= f.text_field :nickname, class: "form-control rounded-3", placeholder: "ニックネーム" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス", class: "form-label text-dark" %>
+        <%= f.email_field :email, class: "form-control rounded-3", placeholder: "example@tokino.com" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, "パスワード", class: "form-label text-dark" %>
+        <% if @minimum_password_length %>
+          <small class="form-text text-muted">（<%= @minimum_password_length %>文字以上）</small>
+        <% end %>
+        <%= f.password_field :password, class: "form-control rounded-3", placeholder: "6文字以上で入力してください" %>
+      </div>
+
+      <div class="mb-4">
+        <%= f.label :password_confirmation, "パスワード（確認）", class: "form-label text-dark" %>
+        <%= f.password_field :password_confirmation, class: "form-control rounded-3", placeholder: "もう一度入力してください" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "じかんの記録をはじめる", class: "btn btn-outline-success rounded-3" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-
-  <%= link_to 'トップページに戻る', '#' %> <%# リンク先指定 %>
-<% end %>
+</div>
