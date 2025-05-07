@@ -1,16 +1,24 @@
-<h2>Forgot your password?</h2>
+<div class="container my-5">
+  <div class="reset-password-card p-4 rounded-3 shadow-sm bg-white mx-auto" style="max-width: 600px;">
+    <h2 class="text-center mb-4 text-muted">パスワードを再設定する</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="mb-3">
+        <%= f.label :email, "登録済みメールアドレス", class: "form-label text-dark" %>
+        <%= f.email_field :email, class: "form-control rounded-3", autofocus: true, autocomplete: "email", placeholder: "example@tokino.com" %>
+      </div>
+
+      <div class="d-grid">
+        <%= f.submit "再設定メールを送信する", class: "btn btn-outline-success rounded-3" %>
+      </div>
+    <% end %>
+
+    <div class="devise-links-muted text-center mt-4">
+      <%= link_to "ログイン", new_session_path(resource_name), class: "link-muted" %>
+      <%= link_to "新規登録", new_registration_path(resource_name), class: "link-muted" %>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
