@@ -1,0 +1,22 @@
+.form-error-box {
+  background-color: #fff4f1;
+  border: 1px solid #e4bfbf;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  color: #6b4b3e;
+  font-size: 0.95rem;
+
+  h5 {
+    font-weight: bold;
+    color: #a24b4b;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li {
+      list-style: disc;
+    }
+  }
+}
