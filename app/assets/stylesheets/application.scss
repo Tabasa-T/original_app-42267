@@ -1,6 +1,7 @@
 @import "logout_message";
 @import "posts";
 @import "devise";
+@import "error_messages";
 
 html {
   margin: 0;
@@ -108,4 +109,3 @@ footer {
 body {
   font-family: 'Noto Sans JP', sans-serif !important;
 }
-
