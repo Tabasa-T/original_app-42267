@@ -35,9 +35,13 @@
         </nav>
       </div>
     </header>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
+    <!-- フラッシュメッセージ・アラート -->
+    <% flash.each do |type, message| %>
+      <% if message.present? %>
+        <div class="flash flash-<%= type %>"><%= message %></div>
+      <% end %>
     <% end %>
+
     <!-- オーバーレイ用のHTML（常に含める） -->
     <div id="force-exit-overlay">
       <div class="message">
@@ -45,6 +49,7 @@
         また明日、集中した時間を一緒に作ろう☕️
       </div>
     </div>
+    
     <!-- メイン -->
     <main>
       <%= yield %>

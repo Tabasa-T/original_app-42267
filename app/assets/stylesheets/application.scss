@@ -15,12 +15,12 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; // ← ここに移してOK
+  overflow-x: hidden;
 }
 
 header {
-  background-color: #f4e3d7;  // フッターと統一
-  color: #6e5a47;             // フッターと統一
+  background-color: #f4e3d7;
+  color: #6e5a47;
   padding: 1rem 0;
   border-bottom: 1px solid #d6c1af;
 }
@@ -58,6 +58,7 @@ header a:hover {
   }
 }
 
+//オーバーレイ
 .library-background {
   background-image: image-url('library_big.png');
   background-size: cover;
@@ -89,7 +90,7 @@ header a:hover {
 
 .library-background .container {
   position: relative;
-  z-index: 2; // ← オーバーレイより上に文字を表示
+  z-index: 2;
 }
 
 main {
@@ -108,4 +109,28 @@ footer {
 
 body {
   font-family: 'Noto Sans JP', sans-serif !important;
+}
+
+//フラッシュメッセージ・アラート
+.flash {
+  margin: 1rem auto;
+  padding: 1rem 1.25rem;
+  max-width: 600px;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.flash-notice {
+  background-color: #f1ede7;
+  color: #5e4a3d;
+  border: 1px solid #d8cfc7;
+}
+
+.flash-alert {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
 }
