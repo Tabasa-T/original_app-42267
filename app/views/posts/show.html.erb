@@ -18,7 +18,14 @@
       <%# 投稿データ %>
       <p><strong>かかった時間:</strong> <%= @post.duration %>分</p>
       <p><strong>やってみたこと:</strong> <%= @post.result %></p>
-      <p><strong>投稿者:</strong> <%= link_to @post.user.nickname, mypage_path %></p>
+      <p><strong>投稿者:</strong>
+        <% if user_signed_in? && current_user == @post.user %>
+          <%= link_to @post.user.nickname, mypage_path, class: "text-decoration-none" %>
+        <% else %>
+          <%= @post.user.nickname %>
+        <% end %>
+      </p>
+
 
       <%# 編集・削除ボタン（本人のみ） %>
       <% if user_signed_in? && current_user == @post.user %>
