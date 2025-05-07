@@ -20,10 +20,12 @@
     <!-- ヘッダー -->
     <header>
       <div class="container d-flex justify-content-between align-items-center">
-        <strong class="fs-4">ときの図書室</strong>
+        <%= link_to root_path, class: "fs-4 text-decoration-none fw-bold", style: "color: #6e5a47;" do %>
+          ときの図書室
+        <% end %>
         <nav>
           <% if user_signed_in? %>
-            <%= link_to "ホーム", root_path, class: "btn-library" %>
+            <%= link_to "マイページ", mypage_path, class: "btn-library" %>
             <%= link_to "記録する", new_post_path, class: "btn-library" %>
             <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn-library" %>
           <% else %>
