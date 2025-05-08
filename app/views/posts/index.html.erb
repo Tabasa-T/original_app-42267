@@ -10,7 +10,7 @@
           <%= link_to post_path(post.id), class: "post-link" do %>
             <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
             <p><strong>成果:</strong> <%= truncate(post.result, length: 80) %></p>
-
+      
             <div class="post-image">
               <% if post.image.attached? %>
                 <%= image_tag post.image, class: "img-fluid rounded" %>
@@ -18,6 +18,7 @@
                 <%= image_tag "notebook3.png", class: "img-fluid rounded" %>
               <% end %>
             </div>
+            <p><strong>投稿日:</strong> <%= post.created_at.strftime('%Y年%m月%d日') %></p>
           <% end %>
         </div>
       <% end %>

@@ -21,6 +21,7 @@
                   <%= image_tag "sprout.png", class: "img-fluid rounded" %>
                 <% end %>
               </div>
+              <p><strong>投稿日:</strong> <%= post.created_at.strftime('%Y年%m月%d日') %></p>
             <% end %>
           </div>
         <% end %>
