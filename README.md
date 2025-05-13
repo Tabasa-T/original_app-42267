@@ -80,13 +80,18 @@ ER図：添付予定
 
 ## 開発環境
 
-- 言語 Ruby
-- フレームワーク Ruby on Rails 7.1.0
-- データベース：PostgreSQL(本番) / MySQL(開発)
-- フロントエンド：HTML / CSS / JavaScript / Bootstrap
-- 認証：Devise
-- デプロイ：Render
-- バージョン管理 GitHub
+|項目         |バージョン・サービス                        |
+|-------------|------------------------------------------|
+|言語         |Ruby 3.2.0                                |
+|フレームワーク|rails 7.1.5.1                             |
+|データベース  |MySQL8.0.41(開発) / PostgreSQL16(本番)     |
+|フロントエンド|HTML5 / SCSS / JavaScript / Bootstrap5.3.5|
+|認証機能      |devise4.9.4                               |
+|画像管理      |ActiveStorage / MiniMagick                |
+|テスト        |Rspec / FactoryBot                        |
+|デプロイ環境   |Render                                    |
+|バージョン管理 |GitHub                                    |
+
 
 
 
