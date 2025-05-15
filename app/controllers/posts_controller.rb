@@ -36,7 +36,13 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to root_path, notice: '投稿を削除しました'
+    
+    case params[:from]
+    when 'mypage'
+      redirect_to mypage_path, notice: '投稿を削除しました'
+    else
+      redirect_to posts_path, notice: '投稿を削除しました'
+    end
   end
 
   def mypage
