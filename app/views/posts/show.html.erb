@@ -31,7 +31,7 @@
       <% if user_signed_in? && current_user == @post.user %>
         <div class="mt-4 d-flex gap-3 justify-content-center">
           <%= link_to '編集', edit_post_path(@post), class: "btn btn-outline-primary rounded-3" %>
-          <%= link_to '削除', post_path(@post), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger rounded-3" %>
+          <%= link_to '削除', post_path(@post, from: params[:from]), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger rounded-3" %>
         </div>
       <% end %>
     </div>
