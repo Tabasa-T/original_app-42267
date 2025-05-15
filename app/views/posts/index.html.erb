@@ -7,7 +7,7 @@
         <div class="post-card">
           <p class="post-author"><strong><%= post.user.nickname %></strong> さんの記録</p>
 
-          <%= link_to post_path(post.id), class: "post-link" do %>
+          <%= link_to post_path(post, from: 'index'), class: "post-link" do %>
             <p><strong>かかった時間:</strong> <%= post.duration %>分</p>
             <p><strong>成果:</strong> <%= truncate(post.result, length: 80) %></p>
       
