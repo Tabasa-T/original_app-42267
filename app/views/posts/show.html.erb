@@ -34,6 +34,15 @@
           <%= link_to '削除', post_path(@post, from: params[:from]), data: { turbo_method: :delete, confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger rounded-3" %>
         </div>
       <% end %>
+
+      <%# いいねボタン %>
+      <% if current_user && current_user.liked_posts.include?(@post) %>
+        <%= button_to '♥ いいね済み', post_like_path(@post), method: :delete, class: 'liked-button' %>
+      <% elsif current_user %>
+        <%= button_to '♡ いいね', post_like_path(@post), method: :post, class: 'like-button' %>
+      <% else %>
+        <p>ログインするといいねできます</p>
+      <% end %>
     </div>
   </div>
 </main>
