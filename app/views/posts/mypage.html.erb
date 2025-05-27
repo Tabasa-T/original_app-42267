@@ -3,7 +3,12 @@
     <div class="mypage-header text-center mb-4">
       <h2 class="text-library"> <%= current_user.nickname %> さんのマイページ</h2>
     </div>
+    <div class="mypage-actions text-end mb-5">
+      <%= link_to 'いいねした記録をみる', liked_posts_path, class: 'btn-library mx-2' %>
+      <%= link_to 'みんなの記録をみる', posts_path, class: 'btn-library mx-2' %>
+    </div>
 
+    <!-- 投稿一覧表示 -->
     <% if @posts.any? %>
       <div class="post-list">
         <% @posts.each do |post| %>
@@ -26,6 +31,7 @@
           </div>
         <% end %>
       </div>
+      
       <!-- 合計記録時間の表示（中央） -->
       <div class="mt-5 text-center">
         <h4 class="text-library">これまでに投資した時間</h4>
