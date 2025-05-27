@@ -36,11 +36,13 @@
       <% end %>
 
       <%# いいねボタン %>
-      <% if current_user && current_user.liked_posts.include?(@post) %>
-        <%= button_to '♥ いいね済み', post_like_path(@post), method: :delete, class: 'liked-button' %>
-      <% elsif current_user %>
-        <%= button_to '♡ いいね', post_like_path(@post), method: :post, class: 'like-button' %>
-      <% else %>
+      <% if current_user && @post.user != current_user %>
+        <% if current_user.liked_posts.include?(@post) %>
+          <%= button_to '♥ いいね済み', post_like_path(@post), method: :delete, class: 'liked-button' %>
+        <% else %>
+          <%= button_to '♡ いいね', post_like_path(@post), method: :post, class: 'like-button' %>
+        <% end %>
+      <% elsif current_user.nil? %>
         <p>ログインするといいねできます</p>
       <% end %>
       <p>いいね数：<%= @post.likes.count %></p>
