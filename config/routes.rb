@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
   get 'mypage', to: 'posts#mypage', as: 'mypage'
+  get 'liked_posts', to: 'likes#index', as: :liked_posts
 end
