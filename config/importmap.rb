@@ -11,4 +11,4 @@ pin "chartjs-adapter-date-fns", to: "https://cdn.jsdelivr.net/npm/chartjs-adapte
 pin "screen_timer", to: "screen_timer.js"
 pin "bootstrap" # @5.3.5
 pin pin "@popperjs/core", to: "https://unpkg.com/@popperjs/core@2.11.8/dist/esm/index.js"
-
+pin "sensational", to: "sensational.js"
