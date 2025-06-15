@@ -8,6 +8,28 @@
         誰かの記録が、あなたのきっかけになるかもしれません。
       </p>
 
+      <% if @sensational_post %>
+        <div id="sensational-overlay" class="overlay-sensational d-none">
+          <div class="overlay-card">
+            <p class="small text-white mb-1">✨注目の投稿</p>
+            <p class="text-white"><strong><%= @sensational_post.user.nickname %> さんの記録</strong></p>
+            <p class="text-white">🕒 <%= @sensational_post.duration %>分</p>
+            <p class="text-white">📘 <%= truncate(@sensational_post.result, length: 60) %></p>
+
+            <%# ✅ 投稿画像がある場合はそれを表示、ない場合は sprout.png を表示 %>
+            <div class="post-image mb-2">
+              <% if @sensational_post.image.attached? %>
+                <%= image_tag @sensational_post.image, class: "img-fluid rounded" %>
+              <% else %>
+                <%= image_tag "sprout.png", class: "img-fluid rounded" %>
+              <% end %>
+            </div>
+
+            <%= link_to "投稿を見る", post_path(@sensational_post, from: 'index'), class: "btn btn-light btn-sm mt-2" %>
+          </div>
+        </div>
+      <% end %>
+
       <div class="d-flex justify-content-center flex-wrap gap-3">
         <%= link_to "みんなの記録を見る", posts_path, class: "btn btn-outline-light btn-lg" %>
 
