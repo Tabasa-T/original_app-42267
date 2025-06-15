@@ -10,4 +10,12 @@ class Post < ApplicationRecord
   end
 
   validates :duration, numericality: {only_integer: true, message: "は半角数字（整数）で入力してください"}
+
+  def self.sensational_sample
+    Post.left_joins(:likes)
+        .group(:id)
+        .order('COUNT(likes.id) DESC')
+        .limit(5)
+        .sample
+  end
 end
